@@ -224,10 +224,10 @@ pre code {
 <p>usamos la funcion read.csv(“path file”)</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjpbImlyaXNEYXRhIDwtIHJlYWQuY3N2KFwiQzovdXNlcnMvcm95YmVyIG1hbmphcnJlei9Eb3dubG9hZHMvaXJpcy5kYXRhXCIsIGhlYWRlciA9IEZBTFNFLCBzdHJpbmdzQXNGYWN0b3JzID0gVFJVRSkiLCJuYW1lcyhpcmlzRGF0YSkgPC0gYyhcIlNlcGFsLmxlbmd0aFwiLCBcIlNlcGFsLndpZHRoXCIsXCJQZXRhbC5sZW5ndGhcIixcIlBldGFsLndpZHRoXCIsIFwiU3BlY2llc1wiKSIsInN1bW1hcnkoaXJpc0RhdGEpIl19 -->
-<pre class="r"><code>irisData &lt;- read.csv(&quot;C:/users/royber manjarrez/Downloads/iris.data&quot;, header = FALSE, stringsAsFactors = TRUE)
-names(irisData) &lt;- c(&quot;Sepal.length&quot;, &quot;Sepal.width&quot;,&quot;Petal.length&quot;,&quot;Petal.width&quot;, &quot;Species&quot;)
-summary(irisData)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjpbIiAgaXJpc0RhdGEgPC0gcmVhZC5jc3YoXCJDOi91c2Vycy9yb3liZXIgbWFuamFycmV6L0Rvd25sb2Fkcy9pcmlzLmRhdGFcIiwgaGVhZGVyID0gRkFMU0UsIHN0cmluZ3NBc0ZhY3RvcnMgPSBUUlVFKSIsIiAgbmFtZXMoaXJpc0RhdGEpIDwtIGMoXCJTZXBhbC5sZW5ndGhcIiwgXCJTZXBhbC53aWR0aFwiLFwiUGV0YWwubGVuZ3RoXCIsXCJQZXRhbC53aWR0aFwiLCBcIlNwZWNpZXNcIikiLCIgIHN1bW1hcnkoaXJpc0RhdGEpIl19 -->
+<pre class="r"><code>  irisData &lt;- read.csv(&quot;C:/users/royber manjarrez/Downloads/iris.data&quot;, header = FALSE, stringsAsFactors = TRUE)
+  names(irisData) &lt;- c(&quot;Sepal.length&quot;, &quot;Sepal.width&quot;,&quot;Petal.length&quot;,&quot;Petal.width&quot;, &quot;Species&quot;)
+  summary(irisData)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiICBTZXBhbC5sZW5ndGggICAgU2VwYWwud2lkdGggICAgIFBldGFsLmxlbmd0aCAgICBQZXRhbC53aWR0aCAgIFxuIE1pbi4gICA6NC4zMDAgICBNaW4uICAgOjIuMDAwICAgTWluLiAgIDoxLjAwMCAgIE1pbi4gICA6MC4xMDAgIFxuIDFzdCBRdS46NS4xMDAgICAxc3QgUXUuOjIuODAwICAgMXN0IFF1LjoxLjYwMCAgIDFzdCBRdS46MC4zMDAgIFxuIE1lZGlhbiA6NS44MDAgICBNZWRpYW4gOjMuMDAwICAgTWVkaWFuIDo0LjM1MCAgIE1lZGlhbiA6MS4zMDAgIFxuIE1lYW4gICA6NS44NDMgICBNZWFuICAgOjMuMDU0ICAgTWVhbiAgIDozLjc1OSAgIE1lYW4gICA6MS4xOTkgIFxuIDNyZCBRdS46Ni40MDAgICAzcmQgUXUuOjMuMzAwICAgM3JkIFF1Ljo1LjEwMCAgIDNyZCBRdS46MS44MDAgIFxuIE1heC4gICA6Ny45MDAgICBNYXguICAgOjQuNDAwICAgTWF4LiAgIDo2LjkwMCAgIE1heC4gICA6Mi41MDAgIFxuICAgICAgICAgICAgU3BlY2llcyAgXG4gSXJpcy1zZXRvc2EgICAgOjUwICBcbiBJcmlzLXZlcnNpY29sb3I6NTAgIFxuIElyaXMtdmlyZ2luaWNhIDo1MCAgXG4gICAgICAgICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgIFxuICAgICAgICAgICAgICAgICAgICAgXG4ifQ== -->
 <pre><code>  Sepal.length    Sepal.width     Petal.length    Petal.width   
@@ -264,19 +264,62 @@ summary(irisData)</code></pre>
 </div>
 <div id="numero-de-atributos" class="section level3">
 <h3>Numero de atributos</h3>
-<p>usamos la función nrow para saber la cantidad de datos en los data</p>
+<p>usamos la función ncol y colnames para saber la cantidad de atributos en el dataset, como resultado obtuvimos 5</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoibmNvbChpcmlzRGF0YSkifQ== -->
-<pre class="r"><code>ncol(irisData)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiICBuY29sKGlyaXNEYXRhKSJ9 -->
+<pre class="r"><code>  ncol(irisData)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIDVcbiJ9 -->
 <pre><code>[1] 5</code></pre>
 <!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiICBjb2xuYW1lcyhpcmlzRGF0YSkifQ== -->
+<pre class="r"><code>  colnames(irisData)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiU2VwYWwubGVuZ3RoXCIgXCJTZXBhbC53aWR0aFwiICBcIlBldGFsLmxlbmd0aFwiIFwiUGV0YWwud2lkdGhcIiAgXCJTcGVjaWVzXCIgICAgIFxuIn0= -->
+<pre><code>[1] &quot;Sepal.length&quot; &quot;Sepal.width&quot;  &quot;Petal.length&quot; &quot;Petal.width&quot;  &quot;Species&quot;     </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjpbIlNlcGFsLmxlbmd0aFxuIiwiU2VwYWwud2lkdGhcbiIsIlBldGFsLmxlbmd0aFxuIiwiUGV0YWwud2lkdGhcbiIsIlNwZWNpZXNcbiJdfQ== -->
+<pre><code>Sepal.length
+
+Sepal.width
+
+Petal.length
+
+Petal.width
+
+Species</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="cuántos-atributos-son-numéricos-y-cuántos-categóricos" class="section level3">
+<h3>¿Cuántos atributos son numéricos y cuántos categóricos?</h3>
+<p>tenemos 5 atributos de tipo númerico y 1 categorico</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiICBzYXBwbHkoaXJpc0RhdGEsY2xhc3MpIn0= -->
+<pre class="r"><code>  sapply(irisData,class)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiU2VwYWwubGVuZ3RoICBTZXBhbC53aWR0aCBQZXRhbC5sZW5ndGggIFBldGFsLndpZHRoICAgICAgU3BlY2llcyBcbiAgIFwibnVtZXJpY1wiICAgIFwibnVtZXJpY1wiICAgIFwibnVtZXJpY1wiICAgIFwibnVtZXJpY1wiICAgICBcImZhY3RvclwiIFxuIn0= -->
+<pre><code>Sepal.length  Sepal.width Petal.length  Petal.width      Species 
+   &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;     &quot;factor&quot; </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjpbIm51bWVyaWNcbiIsIm51bWVyaWNcbiIsIm51bWVyaWNcbiIsIm51bWVyaWNcbiIsImZhY3RvclxuIl19 -->
+<pre><code>numeric
+
+numeric
+
+numeric
+
+numeric
+
+factor</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogVGFsbGVyIElyaXMNCmF1dGhvcjogUm95YmVyIE1hbmphcnJleiB5IEd1c3Rhdm8gR2FyY2lhDQpkYXRlOiBNYXJjaCA3LCAyMDIxDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KIyMjIGNhcmdhbW9zIGVsIGNvbmp1bnRvIGRlIGRhdG9zDQoNCnVzYW1vcyBsYSBmdW5jaW9uIHJlYWQuY3N2KCJwYXRoIGZpbGUiKQ0KYGBge3J9DQppcmlzRGF0YSA8LSByZWFkLmNzdigiQzovdXNlcnMvcm95YmVyIG1hbmphcnJlei9Eb3dubG9hZHMvaXJpcy5kYXRhIiwgaGVhZGVyID0gRkFMU0UsIHN0cmluZ3NBc0ZhY3RvcnMgPSBUUlVFKQ0KbmFtZXMoaXJpc0RhdGEpIDwtIGMoIlNlcGFsLmxlbmd0aCIsICJTZXBhbC53aWR0aCIsIlBldGFsLmxlbmd0aCIsIlBldGFsLndpZHRoIiwgIlNwZWNpZXMiKQ0Kc3VtbWFyeShpcmlzRGF0YSkNCmBgYA0KDQojIyMgTnVtZXJvIGRlIGluc3RhbmNpYXMNCg0KdXNhbW9zIGxhIGZ1bmNpw7NuIG5yb3cgcGFyYSBzYWJlciBsYSBjYW50aWRhZCBkZSBkYXRvcyBlbiBsb3MgZGF0YQ0KDQpgYGB7cn0NCiAgbnJvdyhpcmlzRGF0YSkNCmBgYA0KIyMjIE51bWVybyBkZSBhdHJpYnV0b3MNCg0KdXNhbW9zIGxhIGZ1bmNpw7NuIG5yb3cgcGFyYSBzYWJlciBsYSBjYW50aWRhZCBkZSBkYXRvcyBlbiBsb3MgZGF0YQ0KDQpgYGB7cn0NCm5jb2woaXJpc0RhdGEpDQpgYGA=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogVGFsbGVyIElyaXMNCmF1dGhvcjogUm95YmVyIE1hbmphcnJleiB5IEd1c3Rhdm8gR2FyY2lhDQpkYXRlOiBNYXJjaCA3LCAyMDIxDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KIyMjIGNhcmdhbW9zIGVsIGNvbmp1bnRvIGRlIGRhdG9zDQoNCnVzYW1vcyBsYSBmdW5jaW9uIHJlYWQuY3N2KCJwYXRoIGZpbGUiKQ0KYGBge3J9DQogIGlyaXNEYXRhIDwtIHJlYWQuY3N2KCJDOi91c2Vycy9yb3liZXIgbWFuamFycmV6L0Rvd25sb2Fkcy9pcmlzLmRhdGEiLCBoZWFkZXIgPSBGQUxTRSwgc3RyaW5nc0FzRmFjdG9ycyA9IFRSVUUpDQogIG5hbWVzKGlyaXNEYXRhKSA8LSBjKCJTZXBhbC5sZW5ndGgiLCAiU2VwYWwud2lkdGgiLCJQZXRhbC5sZW5ndGgiLCJQZXRhbC53aWR0aCIsICJTcGVjaWVzIikNCiAgc3VtbWFyeShpcmlzRGF0YSkNCmBgYA0KIyMjIE51bWVybyBkZSBpbnN0YW5jaWFzDQoNCnVzYW1vcyBsYSBmdW5jacOzbiBucm93IHBhcmEgc2FiZXIgbGEgY2FudGlkYWQgZGUgZGF0b3MgZW4gbG9zIGRhdGENCg0KYGBge3J9DQogIG5yb3coaXJpc0RhdGEpDQpgYGANCiMjIyBOdW1lcm8gZGUgYXRyaWJ1dG9zDQoNCnVzYW1vcyBsYSBmdW5jacOzbiBuY29sIHkgY29sbmFtZXMgcGFyYSBzYWJlciBsYSBjYW50aWRhZCBkZSBhdHJpYnV0b3MgZW4gZWwgZGF0YXNldCwgY29tbyByZXN1bHRhZG8gb2J0dXZpbW9zIDUNCmBgYHtyfQ0KICBuY29sKGlyaXNEYXRhKQ0KICBjb2xuYW1lcyhpcmlzRGF0YSkNCmBgYA0KIyMjICDCv0N1w6FudG9zIGF0cmlidXRvcyBzb24gbnVtw6lyaWNvcyB5IGN1w6FudG9zIGNhdGVnw7NyaWNvcz8NCg0KdGVuZW1vcyA1IGF0cmlidXRvcyBkZSB0aXBvIG7Dum1lcmljbyB5IDEgY2F0ZWdvcmljbw0KYGBge3J9DQogIHNhcHBseShpcmlzRGF0YSxjbGFzcykNCmBgYA==</div>
 
 
 
