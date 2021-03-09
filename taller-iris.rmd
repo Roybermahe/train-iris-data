@@ -4,7 +4,7 @@ author: Royber Manjarrez y Gustavo Garcia
 date: March 7, 2021
 output: html_notebook
 ---
-### cargamos el conjunto de datos
+### 1. Cargar el Conjunto de Datos
 
 usamos la funcion read.csv("path file")
 ```{r}
@@ -12,23 +12,63 @@ usamos la funcion read.csv("path file")
   names(irisData) <- c("Sepal.length", "Sepal.width","Petal.length","Petal.width", "Species")
   summary(irisData)
 ```
-### Numero de instancias
+### 2. Numero de instancias
 
 usamos la función nrow para saber la cantidad de datos en los data
 
 ```{r}
   nrow(irisData)
 ```
-### Numero de atributos
+### 3. Numero de atributos   -> falta corregir
+```{r}
+
+```
 
 usamos la función ncol y colnames para saber la cantidad de atributos en el dataset, como resultado obtuvimos 5
 ```{r}
   ncol(irisData)
   colnames(irisData)
 ```
-###  ¿Cuántos atributos son numéricos y cuántos categóricos?
+### 5. ¿Cuántos atributos son numéricos y cuántos categóricos?
 
 tenemos 5 atributos de tipo númerico y 1 categorico
 ```{r}
   sapply(irisData,class)
+```
+
+### 7. Reporte la media, rango y desviación estándar para cada atributo numérico
+
+primero se instalan las librerias necesarias
+```{r}
+install.packages("dplyr")
+library(dplyr)
+```
+
+```{r}
+  sepal.length <- select(irisData, Sepal.length) %>% unlist
+  sepal.widht <- select(irisData, Sepal.width ) %>% unlist
+  petal.length <- select(irisData, Petal.length ) %>% unlist
+  petal.width <- select(irisData, Petal.width ) %>% unlist
+
+print("Sepal Length")
+mean(sepal.length)
+range(sepal.length)
+sd(sepal.length)
+
+print("Sepal Widht")
+mean(sepal.widht)
+range(sepal.widht)
+sd(sepal.widht)
+
+print("Petal Length")
+mean(petal.length)
+range(petal.length)
+sd(petal.length)
+
+print("Petal Widht")
+mean(petal.width)
+range(petal.width)
+sd(petal.width)
+
+
 ```
