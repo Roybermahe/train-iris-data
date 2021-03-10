@@ -219,8 +219,35 @@ pre code {
 
 
 <!-- rnb-text-begin -->
-<div id="cargamos-el-conjunto-de-datos" class="section level3">
-<h3>cargamos el conjunto de datos</h3>
+<div id="cargamos-las-librerias" class="section level3">
+<h3>Cargamos las librerias</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoibGlicmFyeShkcGx5cikifQ== -->
+<pre class="r"><code>library(dplyr)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-message-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTogJ2RwbHlyJ1xuIn0= -->
+<pre><code>
+Attaching package: &#39;dplyr&#39;</code></pre>
+<!-- rnb-message-end -->
+<!-- rnb-message-begin eyJkYXRhIjoiVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSAncGFja2FnZTpzdGF0cyc6XG5cbiAgICBmaWx0ZXIsIGxhZ1xuIn0= -->
+<pre><code>The following objects are masked from &#39;package:stats&#39;:
+
+    filter, lag</code></pre>
+<!-- rnb-message-end -->
+<!-- rnb-message-begin eyJkYXRhIjoiVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSAncGFja2FnZTpiYXNlJzpcblxuICAgIGludGVyc2VjdCwgc2V0ZGlmZiwgc2V0ZXF1YWwsIHVuaW9uXG4ifQ== -->
+<pre><code>The following objects are masked from &#39;package:base&#39;:
+
+    intersect, setdiff, setequal, union</code></pre>
+<!-- rnb-message-end -->
+<!-- rnb-source-begin eyJkYXRhIjoibGlicmFyeShtb2RlZXN0KSJ9 -->
+<pre class="r"><code>library(modeest)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="cargar-el-conjunto-de-datos" class="section level3">
+<h3>1. Cargar el Conjunto de Datos</h3>
 <p>usamos la funcion read.csv(“path file”)</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
@@ -249,7 +276,7 @@ pre code {
 <!-- rnb-text-begin -->
 </div>
 <div id="numero-de-instancias" class="section level3">
-<h3>Numero de instancias</h3>
+<h3>2. Numero de instancias</h3>
 <p>usamos la función nrow para saber la cantidad de datos en los data</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
@@ -263,7 +290,27 @@ pre code {
 <!-- rnb-text-begin -->
 </div>
 <div id="numero-de-atributos" class="section level3">
-<h3>Numero de atributos</h3>
+<h3>3. Numero de atributos</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbImRhdGEgPC0gaXJpc0RhdGEgJT4lIHNlbGVjdF9pZihpcy5udW1lcmljKSIsImNvbG5hbWVzKGRhdGEpOyJdfQ== -->
+<pre class="r"><code>data &lt;- irisData %&gt;% select_if(is.numeric)
+colnames(data);</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiU2VwYWwubGVuZ3RoXCIgXCJTZXBhbC53aWR0aFwiICBcIlBldGFsLmxlbmd0aFwiIFwiUGV0YWwud2lkdGhcIiBcbiJ9 -->
+<pre><code>[1] &quot;Sepal.length&quot; &quot;Sepal.width&quot;  &quot;Petal.length&quot; &quot;Petal.width&quot; </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjpbIlNlcGFsLmxlbmd0aFxuIiwiU2VwYWwud2lkdGhcbiIsIlBldGFsLmxlbmd0aFxuIiwiUGV0YWwud2lkdGhcbiJdfQ== -->
+<pre><code>Sepal.length
+
+Sepal.width
+
+Petal.length
+
+Petal.width</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <p>usamos la función ncol y colnames para saber la cantidad de atributos en el dataset, como resultado obtuvimos 5</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
@@ -294,7 +341,7 @@ Species</code></pre>
 <!-- rnb-text-begin -->
 </div>
 <div id="cuántos-atributos-son-numéricos-y-cuántos-categóricos" class="section level3">
-<h3>¿Cuántos atributos son numéricos y cuántos categóricos?</h3>
+<h3>5. ¿Cuántos atributos son numéricos y cuántos categóricos?</h3>
 <p>tenemos 5 atributos de tipo númerico y 1 categorico</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
@@ -317,9 +364,172 @@ numeric
 factor</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="reporte-la-moda-para-cada-atributo-categórico" class="section level3">
+<h3>6. Reporte la moda para cada atributo categórico</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgYWdydXBhbW9zIGxvcyBkYXRvcyBwb3Igc3UgY2F0ZWdvcmlhIiwiZ3JvdXBTZXRvc2EgPC0gc3Vic2V0KGlyaXNEYXRhLCBTcGVjaWVzID09IFwiSXJpcy1zZXRvc2FcIikiLCJncm91cFZlcnNpY29sb3IgPC0gc3Vic2V0KGlyaXNEYXRhLCBTcGVjaWVzID09IFwiSXJpcy12ZXJzaWNvbG9yXCIpIiwiZ3JvdXBWaXJnaW5pY2EgPC0gc3Vic2V0KGlyaXNEYXRhLCBTcGVjaWVzID09IFwiSXJpcy12aXJnaW5pY2FcIikiLCIiLCIjIG9idGVuZW1vcyBsYSBtb2RhIGRlIGNhZGEgdW5vIGRlIGxvcyBncnVwb3MiLCJncm91cFNldG9zYSAlPiUgc3VtbWFyaXNlKFxuICBhdHRyID0gXCJJcmlzLVNldG9zYVwiLFxuICBtUGV0YWwubGVuZ3RoID0gbWx2KFBldGFsLmxlbmd0aCAsbWV0aG9kID0gXCJtZnZcIiksXG4gIG1QZXRhbC53aWR0aCA9IG1sdihQZXRhbC53aWR0aCAsbWV0aG9kID0gXCJtZnZcIiksXG4gIG1TZXBhLmxlbmd0aCA9IG1sdihTZXBhbC5sZW5ndGggLG1ldGhvZCA9IFwibWZ2XCIpLFxuICBtU2VwYS53aWR0aCA9IG1sdihTZXBhbC53aWR0aCAsbWV0aG9kID0gXCJtZnZcIilcbikiXX0= -->
+<pre class="r"><code># agrupamos los datos por su categoria
+groupSetosa &lt;- subset(irisData, Species == &quot;Iris-setosa&quot;)
+groupVersicolor &lt;- subset(irisData, Species == &quot;Iris-versicolor&quot;)
+groupVirginica &lt;- subset(irisData, Species == &quot;Iris-virginica&quot;)
+
+# obtenemos la moda de cada uno de los grupos
+groupSetosa %&gt;% summarise(
+  attr = &quot;Iris-Setosa&quot;,
+  mPetal.length = mlv(Petal.length ,method = &quot;mfv&quot;),
+  mPetal.width = mlv(Petal.width ,method = &quot;mfv&quot;),
+  mSepa.length = mlv(Sepal.length ,method = &quot;mfv&quot;),
+  mSepa.width = mlv(Sepal.width ,method = &quot;mfv&quot;)
+)</code></pre>
+<!-- rnb-source-end -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["attr"],"name":[1],"type":["chr"],"align":["left"]},{"label":["mPetal.length"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mPetal.width"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["mSepa.length"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["mSepa.width"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Iris-Setosa","2":"1.5","3":"0.2","4":"5.0","5":"3.4"},{"1":"Iris-Setosa","2":"1.5","3":"0.2","4":"5.1","5":"3.4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-source-begin eyJkYXRhIjoiZ3JvdXBWZXJzaWNvbG9yICU+JSBzdW1tYXJpc2UoXG4gIGF0dHIgPSBcIklyaXMtVmVyc2ljb2xvclwiLFxuICBtUGV0YWwubGVuZ3RoID0gbWx2KFBldGFsLmxlbmd0aCAsbWV0aG9kID0gXCJtZnZcIiksXG4gIG1QZXRhbC53aWR0aCA9IG1sdihQZXRhbC53aWR0aCAsbWV0aG9kID0gXCJtZnZcIiksXG4gIG1TZXBhLmxlbmd0aCA9IG1sdihTZXBhbC5sZW5ndGggLG1ldGhvZCA9IFwibWZ2XCIpLFxuICBtU2VwYS53aWR0aCA9IG1sdihTZXBhbC53aWR0aCAsbWV0aG9kID0gXCJtZnZcIilcbikifQ== -->
+<pre class="r"><code>groupVersicolor %&gt;% summarise(
+  attr = &quot;Iris-Versicolor&quot;,
+  mPetal.length = mlv(Petal.length ,method = &quot;mfv&quot;),
+  mPetal.width = mlv(Petal.width ,method = &quot;mfv&quot;),
+  mSepa.length = mlv(Sepal.length ,method = &quot;mfv&quot;),
+  mSepa.width = mlv(Sepal.width ,method = &quot;mfv&quot;)
+)</code></pre>
+<!-- rnb-source-end -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["attr"],"name":[1],"type":["chr"],"align":["left"]},{"label":["mPetal.length"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mPetal.width"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["mSepa.length"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["mSepa.width"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Iris-Versicolor","2":"4.5","3":"1.3","4":"5.5","5":"3"},{"1":"Iris-Versicolor","2":"4.5","3":"1.3","4":"5.6","5":"3"},{"1":"Iris-Versicolor","2":"4.5","3":"1.3","4":"5.7","5":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-source-begin eyJkYXRhIjoiZ3JvdXBWaXJnaW5pY2EgJT4lIHN1bW1hcmlzZShcbiAgYXR0ciA9IFwiSXJpcy1WaXJnaW5pY2FcIixcbiAgbVBldGFsLmxlbmd0aCA9IG1sdihQZXRhbC5sZW5ndGggLG1ldGhvZCA9IFwibWZ2XCIpLFxuICBtUGV0YWwud2lkdGggPSBtbHYoUGV0YWwud2lkdGggLG1ldGhvZCA9IFwibWZ2XCIpLFxuICBtU2VwYS5sZW5ndGggPSBtbHYoU2VwYWwubGVuZ3RoICxtZXRob2QgPSBcIm1mdlwiKSxcbiAgbVNlcGEud2lkdGggPSBtbHYoU2VwYWwud2lkdGggLG1ldGhvZCA9IFwibWZ2XCIpXG4pIn0= -->
+<pre class="r"><code>groupVirginica %&gt;% summarise(
+  attr = &quot;Iris-Virginica&quot;,
+  mPetal.length = mlv(Petal.length ,method = &quot;mfv&quot;),
+  mPetal.width = mlv(Petal.width ,method = &quot;mfv&quot;),
+  mSepa.length = mlv(Sepal.length ,method = &quot;mfv&quot;),
+  mSepa.width = mlv(Sepal.width ,method = &quot;mfv&quot;)
+)</code></pre>
+<!-- rnb-source-end -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["attr"],"name":[1],"type":["chr"],"align":["left"]},{"label":["mPetal.length"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mPetal.width"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["mSepa.length"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["mSepa.width"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Iris-Virginica","2":"5.1","3":"1.8","4":"6.3","5":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="reporte-la-media-rango-y-desviación-estándar-para-cada-atributo-numérico" class="section level3">
+<h3>7. Reporte la media, rango y desviación estándar para cada atributo numérico</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiAgc2VwYWwubGVuZ3RoIDwtIHNlbGVjdChpcmlzRGF0YSwgU2VwYWwubGVuZ3RoKSAlPiUgdW5saXN0IiwiICBzZXBhbC53aWRodCA8LSBzZWxlY3QoaXJpc0RhdGEsIFNlcGFsLndpZHRoICkgJT4lIHVubGlzdCIsIiAgcGV0YWwubGVuZ3RoIDwtIHNlbGVjdChpcmlzRGF0YSwgUGV0YWwubGVuZ3RoICkgJT4lIHVubGlzdCIsIiAgcGV0YWwud2lkdGggPC0gc2VsZWN0KGlyaXNEYXRhLCBQZXRhbC53aWR0aCApICU+JSB1bmxpc3QiLCIiLCJwcmludChcIlNlcGFsIExlbmd0aFwiKSJdfQ== -->
+<pre class="r"><code>  sepal.length &lt;- select(irisData, Sepal.length) %&gt;% unlist
+  sepal.widht &lt;- select(irisData, Sepal.width ) %&gt;% unlist
+  petal.length &lt;- select(irisData, Petal.length ) %&gt;% unlist
+  petal.width &lt;- select(irisData, Petal.width ) %&gt;% unlist
+
+print(&quot;Sepal Length&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiU2VwYWwgTGVuZ3RoXCJcbiJ9 -->
+<pre><code>[1] &quot;Sepal Length&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiY2F0KFwiTWVkaWE6XCIsIG1lYW4oc2VwYWwubGVuZ3RoKSwgXCJcXG5cIikifQ== -->
+<pre class="r"><code>cat(&quot;Media:&quot;, mean(sepal.length), &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTWVkaWE6IDUuODQzMzMzIFxuIn0= -->
+<pre><code>Media: 5.843333 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiY2F0KFwiUmFuZ286XCIsIHJhbmdlKHNlcGFsLmxlbmd0aCksIFwiXFxuXCIpIn0= -->
+<pre class="r"><code>cat(&quot;Rango:&quot;, range(sepal.length), &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmFuZ286IDQuMyA3LjkgXG4ifQ== -->
+<pre><code>Rango: 4.3 7.9 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiY2F0KFwiRCBlc3Q6XCIsIHNkKHNlcGFsLmxlbmd0aCksIFwiXFxuXCIpIn0= -->
+<pre class="r"><code>cat(&quot;D est:&quot;, sd(sepal.length), &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRCBlc3Q6IDAuODI4MDY2MSBcbiJ9 -->
+<pre><code>D est: 0.8280661 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoicHJpbnQoXCJTZXBhbCBXaWRodFwiKSJ9 -->
+<pre class="r"><code>print(&quot;Sepal Widht&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiU2VwYWwgV2lkaHRcIlxuIn0= -->
+<pre><code>[1] &quot;Sepal Widht&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiY2F0KFwiTWVkaWE6XCIsbWVhbihzZXBhbC53aWRodCksIFwiXFxuXCIpIn0= -->
+<pre class="r"><code>cat(&quot;Media:&quot;,mean(sepal.widht), &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTWVkaWE6IDMuMDU0IFxuIn0= -->
+<pre><code>Media: 3.054 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiY2F0KFwiUmFuZ286XCIscmFuZ2Uoc2VwYWwud2lkaHQpLCBcIlxcblwiKSJ9 -->
+<pre class="r"><code>cat(&quot;Rango:&quot;,range(sepal.widht), &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmFuZ286IDIgNC40IFxuIn0= -->
+<pre><code>Rango: 2 4.4 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiY2F0KFwiRCBlc3Q6XCIsc2Qoc2VwYWwud2lkaHQpLCBcIlxcblwiKSJ9 -->
+<pre class="r"><code>cat(&quot;D est:&quot;,sd(sepal.widht), &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRCBlc3Q6IDAuNDMzNTk0MyBcbiJ9 -->
+<pre><code>D est: 0.4335943 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoicHJpbnQoXCJQZXRhbCBMZW5ndGhcIikifQ== -->
+<pre class="r"><code>print(&quot;Petal Length&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiUGV0YWwgTGVuZ3RoXCJcbiJ9 -->
+<pre><code>[1] &quot;Petal Length&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiY2F0KFwiTWVkaWE6XCIsIG1lYW4ocGV0YWwubGVuZ3RoKSwgXCJcXG5cIikifQ== -->
+<pre class="r"><code>cat(&quot;Media:&quot;, mean(petal.length), &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTWVkaWE6IDMuNzU4NjY3IFxuIn0= -->
+<pre><code>Media: 3.758667 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiY2F0KFwiUmFuZ286XCIsIHJhbmdlKHBldGFsLmxlbmd0aCksIFwiXFxuXCIpIn0= -->
+<pre class="r"><code>cat(&quot;Rango:&quot;, range(petal.length), &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmFuZ286IDEgNi45IFxuIn0= -->
+<pre><code>Rango: 1 6.9 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiY2F0KFwiRCBlc3Q6XCIsIHNkKHBldGFsLmxlbmd0aCksIFwiXFxuXCIpIn0= -->
+<pre class="r"><code>cat(&quot;D est:&quot;, sd(petal.length), &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRCBlc3Q6IDEuNzY0NDIgXG4ifQ== -->
+<pre><code>D est: 1.76442 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoicHJpbnQoXCJQZXRhbCBXaWRodFwiKSJ9 -->
+<pre class="r"><code>print(&quot;Petal Widht&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiUGV0YWwgV2lkaHRcIlxuIn0= -->
+<pre><code>[1] &quot;Petal Widht&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiY2F0KFwiTWVkaWE6XCIsIG1lYW4ocGV0YWwud2lkdGgpLCBcIlxcblwiKSJ9 -->
+<pre class="r"><code>cat(&quot;Media:&quot;, mean(petal.width), &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTWVkaWE6IDEuMTk4NjY3IFxuIn0= -->
+<pre><code>Media: 1.198667 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiY2F0KFwiUmFuZ286XCIsIHJhbmdlKHBldGFsLndpZHRoKSwgXCJcXG5cIikifQ== -->
+<pre class="r"><code>cat(&quot;Rango:&quot;, range(petal.width), &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmFuZ286IDAuMSAyLjUgXG4ifQ== -->
+<pre><code>Rango: 0.1 2.5 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiY2F0KFwiRCBlc3Q6XCIsIHNkKHBldGFsLndpZHRoKSwgXCJcXG5cIikifQ== -->
+<pre class="r"><code>cat(&quot;D est:&quot;, sd(petal.width), &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRCBlc3Q6IDAuNzYzMTYwNyBcbiJ9 -->
+<pre><code>D est: 0.7631607 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogVGFsbGVyIElyaXMNCmF1dGhvcjogUm95YmVyIE1hbmphcnJleiB5IEd1c3Rhdm8gR2FyY2lhDQpkYXRlOiBNYXJjaCA3LCAyMDIxDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KIyMjIGNhcmdhbW9zIGVsIGNvbmp1bnRvIGRlIGRhdG9zDQoNCnVzYW1vcyBsYSBmdW5jaW9uIHJlYWQuY3N2KCJwYXRoIGZpbGUiKQ0KYGBge3J9DQogIGlyaXNEYXRhIDwtIHJlYWQuY3N2KCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vUm95YmVybWFoZS90cmFpbi13aXRoLWlyaXMvbWFpbi9pcmlzJTIwKDMpLmRhdGEiLCBoZWFkZXIgPSBGQUxTRSwgc3RyaW5nc0FzRmFjdG9ycyA9IFRSVUUpDQogIG5hbWVzKGlyaXNEYXRhKSA8LSBjKCJTZXBhbC5sZW5ndGgiLCAiU2VwYWwud2lkdGgiLCJQZXRhbC5sZW5ndGgiLCJQZXRhbC53aWR0aCIsICJTcGVjaWVzIikNCiAgc3VtbWFyeShpcmlzRGF0YSkNCmBgYA0KIyMjIE51bWVybyBkZSBpbnN0YW5jaWFzDQoNCnVzYW1vcyBsYSBmdW5jacOzbiBucm93IHBhcmEgc2FiZXIgbGEgY2FudGlkYWQgZGUgZGF0b3MgZW4gbG9zIGRhdGENCg0KYGBge3J9DQogIG5yb3coaXJpc0RhdGEpDQpgYGANCiMjIyBOdW1lcm8gZGUgYXRyaWJ1dG9zDQoNCnVzYW1vcyBsYSBmdW5jacOzbiBuY29sIHkgY29sbmFtZXMgcGFyYSBzYWJlciBsYSBjYW50aWRhZCBkZSBhdHJpYnV0b3MgZW4gZWwgZGF0YXNldCwgY29tbyByZXN1bHRhZG8gb2J0dXZpbW9zIDUNCmBgYHtyfQ0KICBuY29sKGlyaXNEYXRhKQ0KICBjb2xuYW1lcyhpcmlzRGF0YSkNCmBgYA0KIyMjICDCv0N1w6FudG9zIGF0cmlidXRvcyBzb24gbnVtw6lyaWNvcyB5IGN1w6FudG9zIGNhdGVnw7NyaWNvcz8NCg0KdGVuZW1vcyA1IGF0cmlidXRvcyBkZSB0aXBvIG7Dum1lcmljbyB5IDEgY2F0ZWdvcmljbw0KYGBge3J9DQogIHNhcHBseShpcmlzRGF0YSxjbGFzcykNCmBgYA==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogVGFsbGVyIElyaXMNCmF1dGhvcjogUm95YmVyIE1hbmphcnJleiB5IEd1c3Rhdm8gR2FyY2lhDQpkYXRlOiBNYXJjaCA3LCAyMDIxDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KIyMjIENhcmdhbW9zIGxhcyBsaWJyZXJpYXMNCg0KYGBge3J9DQpsaWJyYXJ5KGRwbHlyKQ0KbGlicmFyeShtb2RlZXN0KQ0KYGBgDQoNCiMjIyAxLiBDYXJnYXIgZWwgQ29uanVudG8gZGUgRGF0b3MNCg0KdXNhbW9zIGxhIGZ1bmNpb24gcmVhZC5jc3YoInBhdGggZmlsZSIpDQpgYGB7cn0NCiAgaXJpc0RhdGEgPC0gcmVhZC5jc3YoImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9Sb3liZXJtYWhlL3RyYWluLXdpdGgtaXJpcy9tYWluL2lyaXMlMjAoMykuZGF0YSIsIGhlYWRlciA9IEZBTFNFLCBzdHJpbmdzQXNGYWN0b3JzID0gVFJVRSkNCiAgbmFtZXMoaXJpc0RhdGEpIDwtIGMoIlNlcGFsLmxlbmd0aCIsICJTZXBhbC53aWR0aCIsIlBldGFsLmxlbmd0aCIsIlBldGFsLndpZHRoIiwgIlNwZWNpZXMiKQ0KICBzdW1tYXJ5KGlyaXNEYXRhKQ0KYGBgDQojIyMgMi4gTnVtZXJvIGRlIGluc3RhbmNpYXMNCg0KdXNhbW9zIGxhIGZ1bmNpw7NuIG5yb3cgcGFyYSBzYWJlciBsYSBjYW50aWRhZCBkZSBkYXRvcyBlbiBsb3MgZGF0YQ0KDQpgYGB7cn0NCiAgbnJvdyhpcmlzRGF0YSkNCmBgYA0KIyMjIDMuIE51bWVybyBkZSBhdHJpYnV0b3MNCmBgYHtyfQ0KZGF0YSA8LSBpcmlzRGF0YSAlPiUgc2VsZWN0X2lmKGlzLm51bWVyaWMpDQpjb2xuYW1lcyhkYXRhKTsNCmBgYA0KdXNhbW9zIGxhIGZ1bmNpw7NuIG5jb2wgeSBjb2xuYW1lcyBwYXJhIHNhYmVyIGxhIGNhbnRpZGFkIGRlIGF0cmlidXRvcyBlbiBlbCBkYXRhc2V0LCBjb21vIHJlc3VsdGFkbyBvYnR1dmltb3MgNQ0KYGBge3J9DQogIG5jb2woaXJpc0RhdGEpDQogIGNvbG5hbWVzKGlyaXNEYXRhKQ0KYGBgDQojIyMgNS4gwr9DdcOhbnRvcyBhdHJpYnV0b3Mgc29uIG51bcOpcmljb3MgeSBjdcOhbnRvcyBjYXRlZ8Ozcmljb3M/DQoNCnRlbmVtb3MgNSBhdHJpYnV0b3MgZGUgdGlwbyBuw7ptZXJpY28geSAxIGNhdGVnb3JpY28NCmBgYHtyfQ0KICBzYXBwbHkoaXJpc0RhdGEsY2xhc3MpDQpgYGANCiMjIyA2LiBSZXBvcnRlIGxhIG1vZGEgcGFyYSBjYWRhIGF0cmlidXRvIGNhdGVnw7NyaWNvDQoNCmBgYHtyfQ0KIyBhZ3J1cGFtb3MgbG9zIGRhdG9zIHBvciBzdSBjYXRlZ29yaWENCmdyb3VwU2V0b3NhIDwtIHN1YnNldChpcmlzRGF0YSwgU3BlY2llcyA9PSAiSXJpcy1zZXRvc2EiKQ0KZ3JvdXBWZXJzaWNvbG9yIDwtIHN1YnNldChpcmlzRGF0YSwgU3BlY2llcyA9PSAiSXJpcy12ZXJzaWNvbG9yIikNCmdyb3VwVmlyZ2luaWNhIDwtIHN1YnNldChpcmlzRGF0YSwgU3BlY2llcyA9PSAiSXJpcy12aXJnaW5pY2EiKQ0KDQojIG9idGVuZW1vcyBsYSBtb2RhIGRlIGNhZGEgdW5vIGRlIGxvcyBncnVwb3MNCmdyb3VwU2V0b3NhICU+JSBzdW1tYXJpc2UoDQogIGF0dHIgPSAiSXJpcy1TZXRvc2EiLA0KICBtUGV0YWwubGVuZ3RoID0gbWx2KFBldGFsLmxlbmd0aCAsbWV0aG9kID0gIm1mdiIpLA0KICBtUGV0YWwud2lkdGggPSBtbHYoUGV0YWwud2lkdGggLG1ldGhvZCA9ICJtZnYiKSwNCiAgbVNlcGEubGVuZ3RoID0gbWx2KFNlcGFsLmxlbmd0aCAsbWV0aG9kID0gIm1mdiIpLA0KICBtU2VwYS53aWR0aCA9IG1sdihTZXBhbC53aWR0aCAsbWV0aG9kID0gIm1mdiIpDQopDQoNCmdyb3VwVmVyc2ljb2xvciAlPiUgc3VtbWFyaXNlKA0KICBhdHRyID0gIklyaXMtVmVyc2ljb2xvciIsDQogIG1QZXRhbC5sZW5ndGggPSBtbHYoUGV0YWwubGVuZ3RoICxtZXRob2QgPSAibWZ2IiksDQogIG1QZXRhbC53aWR0aCA9IG1sdihQZXRhbC53aWR0aCAsbWV0aG9kID0gIm1mdiIpLA0KICBtU2VwYS5sZW5ndGggPSBtbHYoU2VwYWwubGVuZ3RoICxtZXRob2QgPSAibWZ2IiksDQogIG1TZXBhLndpZHRoID0gbWx2KFNlcGFsLndpZHRoICxtZXRob2QgPSAibWZ2IikNCikNCg0KZ3JvdXBWaXJnaW5pY2EgJT4lIHN1bW1hcmlzZSgNCiAgYXR0ciA9ICJJcmlzLVZpcmdpbmljYSIsDQogIG1QZXRhbC5sZW5ndGggPSBtbHYoUGV0YWwubGVuZ3RoICxtZXRob2QgPSAibWZ2IiksDQogIG1QZXRhbC53aWR0aCA9IG1sdihQZXRhbC53aWR0aCAsbWV0aG9kID0gIm1mdiIpLA0KICBtU2VwYS5sZW5ndGggPSBtbHYoU2VwYWwubGVuZ3RoICxtZXRob2QgPSAibWZ2IiksDQogIG1TZXBhLndpZHRoID0gbWx2KFNlcGFsLndpZHRoICxtZXRob2QgPSAibWZ2IikNCikNCmBgYA0KDQojIyMgNy4gUmVwb3J0ZSBsYSBtZWRpYSwgcmFuZ28geSBkZXN2aWFjacOzbiBlc3TDoW5kYXIgcGFyYSBjYWRhIGF0cmlidXRvIG51bcOpcmljbw0KDQpgYGB7cn0NCiAgc2VwYWwubGVuZ3RoIDwtIHNlbGVjdChpcmlzRGF0YSwgU2VwYWwubGVuZ3RoKSAlPiUgdW5saXN0DQogIHNlcGFsLndpZGh0IDwtIHNlbGVjdChpcmlzRGF0YSwgU2VwYWwud2lkdGggKSAlPiUgdW5saXN0DQogIHBldGFsLmxlbmd0aCA8LSBzZWxlY3QoaXJpc0RhdGEsIFBldGFsLmxlbmd0aCApICU+JSB1bmxpc3QNCiAgcGV0YWwud2lkdGggPC0gc2VsZWN0KGlyaXNEYXRhLCBQZXRhbC53aWR0aCApICU+JSB1bmxpc3QNCg0KcHJpbnQoIlNlcGFsIExlbmd0aCIpDQpjYXQoIk1lZGlhOiIsIG1lYW4oc2VwYWwubGVuZ3RoKSwgIlxuIikNCmNhdCgiUmFuZ286IiwgcmFuZ2Uoc2VwYWwubGVuZ3RoKSwgIlxuIikNCmNhdCgiRCBlc3Q6Iiwgc2Qoc2VwYWwubGVuZ3RoKSwgIlxuIikNCg0KcHJpbnQoIlNlcGFsIFdpZGh0IikNCmNhdCgiTWVkaWE6IixtZWFuKHNlcGFsLndpZGh0KSwgIlxuIikNCmNhdCgiUmFuZ286IixyYW5nZShzZXBhbC53aWRodCksICJcbiIpDQpjYXQoIkQgZXN0OiIsc2Qoc2VwYWwud2lkaHQpLCAiXG4iKQ0KDQpwcmludCgiUGV0YWwgTGVuZ3RoIikNCmNhdCgiTWVkaWE6IiwgbWVhbihwZXRhbC5sZW5ndGgpLCAiXG4iKQ0KY2F0KCJSYW5nbzoiLCByYW5nZShwZXRhbC5sZW5ndGgpLCAiXG4iKQ0KY2F0KCJEIGVzdDoiLCBzZChwZXRhbC5sZW5ndGgpLCAiXG4iKQ0KDQpwcmludCgiUGV0YWwgV2lkaHQiKQ0KY2F0KCJNZWRpYToiLCBtZWFuKHBldGFsLndpZHRoKSwgIlxuIikNCmNhdCgiUmFuZ286IiwgcmFuZ2UocGV0YWwud2lkdGgpLCAiXG4iKQ0KY2F0KCJEIGVzdDoiLCBzZChwZXRhbC53aWR0aCksICJcbiIpDQpgYGA=</div>
 
 
 

@@ -4,6 +4,13 @@ author: Royber Manjarrez y Gustavo Garcia
 date: March 7, 2021
 output: html_notebook
 ---
+### Cargamos las librerias
+
+```{r}
+library(dplyr)
+library(modeest)
+```
+
 ### 1. Cargar el Conjunto de Datos
 
 usamos la funcion read.csv("path file")
@@ -19,11 +26,11 @@ usamos la función nrow para saber la cantidad de datos en los data
 ```{r}
   nrow(irisData)
 ```
-### 3. Numero de atributos   -> falta corregir
+### 3. Numero de atributos
 ```{r}
-
+data <- irisData %>% select_if(is.numeric)
+colnames(data);
 ```
-
 usamos la función ncol y colnames para saber la cantidad de atributos en el dataset, como resultado obtuvimos 5
 ```{r}
   ncol(irisData)
@@ -35,14 +42,41 @@ tenemos 5 atributos de tipo númerico y 1 categorico
 ```{r}
   sapply(irisData,class)
 ```
+### 6. Reporte la moda para cada atributo categórico
+
+```{r}
+# agrupamos los datos por su categoria
+groupSetosa <- subset(irisData, Species == "Iris-setosa")
+groupVersicolor <- subset(irisData, Species == "Iris-versicolor")
+groupVirginica <- subset(irisData, Species == "Iris-virginica")
+
+# obtenemos la moda de cada uno de los grupos
+groupSetosa %>% summarise(
+  attr = "Iris-Setosa",
+  mPetal.length = mlv(Petal.length ,method = "mfv"),
+  mPetal.width = mlv(Petal.width ,method = "mfv"),
+  mSepa.length = mlv(Sepal.length ,method = "mfv"),
+  mSepa.width = mlv(Sepal.width ,method = "mfv")
+)
+
+groupVersicolor %>% summarise(
+  attr = "Iris-Versicolor",
+  mPetal.length = mlv(Petal.length ,method = "mfv"),
+  mPetal.width = mlv(Petal.width ,method = "mfv"),
+  mSepa.length = mlv(Sepal.length ,method = "mfv"),
+  mSepa.width = mlv(Sepal.width ,method = "mfv")
+)
+
+groupVirginica %>% summarise(
+  attr = "Iris-Virginica",
+  mPetal.length = mlv(Petal.length ,method = "mfv"),
+  mPetal.width = mlv(Petal.width ,method = "mfv"),
+  mSepa.length = mlv(Sepal.length ,method = "mfv"),
+  mSepa.width = mlv(Sepal.width ,method = "mfv")
+)
+```
 
 ### 7. Reporte la media, rango y desviación estándar para cada atributo numérico
-
-primero se instalan las librerias necesarias
-```{r}
-install.packages("dplyr")
-library(dplyr)
-```
 
 ```{r}
   sepal.length <- select(irisData, Sepal.length) %>% unlist
@@ -51,24 +85,22 @@ library(dplyr)
   petal.width <- select(irisData, Petal.width ) %>% unlist
 
 print("Sepal Length")
-mean(sepal.length)
-range(sepal.length)
-sd(sepal.length)
+cat("Media:", mean(sepal.length), "\n")
+cat("Rango:", range(sepal.length), "\n")
+cat("D est:", sd(sepal.length), "\n")
 
 print("Sepal Widht")
-mean(sepal.widht)
-range(sepal.widht)
-sd(sepal.widht)
+cat("Media:",mean(sepal.widht), "\n")
+cat("Rango:",range(sepal.widht), "\n")
+cat("D est:",sd(sepal.widht), "\n")
 
 print("Petal Length")
-mean(petal.length)
-range(petal.length)
-sd(petal.length)
+cat("Media:", mean(petal.length), "\n")
+cat("Rango:", range(petal.length), "\n")
+cat("D est:", sd(petal.length), "\n")
 
 print("Petal Widht")
-mean(petal.width)
-range(petal.width)
-sd(petal.width)
-
-
+cat("Media:", mean(petal.width), "\n")
+cat("Rango:", range(petal.width), "\n")
+cat("D est:", sd(petal.width), "\n")
 ```
