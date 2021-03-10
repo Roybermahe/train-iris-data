@@ -6,9 +6,14 @@ output: html_notebook
 ---
 ### Cargamos las librerias
 
-```{r}
+```{r message = FALSE, warning = FALSE}
+library(VIM)
+library(ggplot2)
 library(dplyr)
 library(modeest)
+library(tidyr)
+library(magrittr)
+library(FactoMineR)
 ```
 
 ### 1. Cargar el Conjunto de Datos
@@ -29,7 +34,7 @@ usamos la función nrow para saber la cantidad de datos en los data
 ### 3. Numero de atributos
 ```{r}
 data <- irisData %>% select_if(is.numeric)
-colnames(data);
+colnames(data)
 ```
 usamos la función ncol y colnames para saber la cantidad de atributos en el dataset, como resultado obtuvimos 5
 ```{r}
@@ -103,4 +108,33 @@ print("Petal Widht")
 cat("Media:", mean(petal.width), "\n")
 cat("Rango:", range(petal.width), "\n")
 cat("D est:", sd(petal.width), "\n")
+```
+### 1.8 Determine el número de valores faltantes para cada atributo
+```{r}
+# Verificamos el patron de datos faltantes
+aggr(irisData, prop = FALSE, number = TRUE, border= NA, combine = TRUE)
+```
+
+### 1.9 Determine la distribución de las clases
+```{r}
+
+
+
+```
+
+### 10. Determine si existen datos atípicos
+Determinamos datos atipicos en cada uno de los atributos
+```{r}
+bp <- ggplot(irisData, aes(x = factor(Species), y = Sepal.length))
+bp + ggtitle("Datos atipicos para el largo de la sepa") + geom_boxplot(aes(fill = Species))
+
+bp <- ggplot(irisData, aes(x = factor(Species), y = Sepal.width))
+bp + ggtitle("Datos atipicos para el ancho de la sepa") + geom_boxplot(aes(fill = Species))
+
+bp <- ggplot(irisData, aes(x = factor(Species), y = Petal.length))
+bp + ggtitle("Datos atipicos para el largo del petalo") + geom_boxplot(aes(fill = Species))
+
+bp <- ggplot(irisData, aes(x = factor(Species), y = Petal.width))
+bp + ggtitle("Datos atipicos para el ancho del petalo") + geom_boxplot(aes(fill = Species))
+
 ```
