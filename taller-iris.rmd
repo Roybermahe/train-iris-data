@@ -120,10 +120,11 @@ aggr(irisData, prop = FALSE, number = TRUE, border= NA, combine = TRUE)
 ```
 
 ### 1.9 Determine la distribución de las clases
-```{r}
-
-
-
+```{r message = FALSE , warning = FALSE}
+ggplot(irisData, aes(x = Sepal.length, fill = Species)) +
+  geom_histogram(alpha = 0.5, position = "identity") +
+  scale_color_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
+  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) + facet_grid( Species ~ .)
 ```
 
 ### 10. Determine si existen datos atípicos
@@ -141,4 +142,11 @@ bp + ggtitle("Datos atipicos para el largo del petalo") + geom_boxplot(aes(fill 
 bp <- ggplot(irisData, aes(x = factor(Species), y = Petal.width))
 bp + ggtitle("Datos atipicos para el ancho del petalo") + geom_boxplot(aes(fill = Species))
 
+```
+### 3. Convierta todas los atributos numéricos a categóricos utilizando dos estrategias diferentes.
+```{r}
+
+```
+### 4. Transforme el conjunto de datos de manera que todos los atributos sean numéricos.
+```{r}
 ```
