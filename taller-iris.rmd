@@ -6,7 +6,10 @@ output: html_notebook
 ---
 ### Cargamos las librerias
 
+
+
 ```{r message = FALSE, warning = FALSE}
+
 library(VIM)
 library(ggplot2)
 library(dplyr)
@@ -126,8 +129,27 @@ ggplot(irisData, aes(x = Sepal.length, fill = Species)) +
   scale_color_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
   scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) + facet_grid( Species ~ .)
 ```
+grafica de torta
+```{r}
+  registroise <- nrow( subset(irisData, Species == "Iris-setosa"))
+  registroive <- nrow(subset(irisData, Species == "Iris-versicolor"))
+  registroivi <- nrow(subset(irisData, Species == "Iris-virginica"))
 
-### 10. Determine si existen datos atípicos
+ porcentaje <- c(registroise, registroive, registroivi)
+
+ etiqueta <- paste(porcentaje, "%", sep=" ")
+
+ colores <- c("orange","blue", "green")
+
+ pie(porcentaje, labels = etiqueta, clockwise = TRUE, col = colores, main = "Distribución de las clases")
+
+ legend("topright", c("Iris Setosa", "Iris Versicolour", "Iris Virginica"), cex = 1.5,
+        fill = colores)
+
+
+```
+
+### 1.10. Determine si existen datos atípicos
 Determinamos datos atipicos en cada uno de los atributos
 ```{r}
 bp <- ggplot(irisData, aes(x = factor(Species), y = Sepal.length))
@@ -143,10 +165,25 @@ bp <- ggplot(irisData, aes(x = factor(Species), y = Petal.width))
 bp + ggtitle("Datos atipicos para el ancho del petalo") + geom_boxplot(aes(fill = Species))
 
 ```
-### 3. Convierta todas los atributos numéricos a categóricos utilizando dos estrategias diferentes.
+
+### 2. Aplique al menos dos estrategias diferentes para manejar los datos faltantes.
+```{r}
+
+```
+
+ ### 3. Convierta todas los atributos numéricos a categóricos utilizando dos estrategias diferentes
 ```{r}
 
 ```
 ### 4. Transforme el conjunto de datos de manera que todos los atributos sean numéricos.
 ```{r}
+
 ```
+### 5.  Escoja una técnica para la detección de datos atípicos y aplíquela sobre el conjunto de datos
+
+
+### 6.  Proponga tres preguntas y resuélvalas a partir de técnicas de visualización
+```{r}
+
+```
+
